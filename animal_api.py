@@ -22,11 +22,9 @@ def show_animal_info(animal_name):
     if animal_data and len(animal_data) > 0:
         animal_info = animal_data[0]  # Get the first animal info from the list
 
-        # Extracting taxonomy information
         taxonomy = animal_info.get('taxonomy', {})
         characteristics = animal_info.get('characteristics', {})
 
-        # Building the information text
         info_text = f"Name: {characteristics.get('common_name', animal_name)}\n"
         info_text += f"Scientific Name: {taxonomy.get('scientific_name', 'Not available')}\n"
         info_text += f"Habitat: {characteristics.get('habitat', 'Not available')}\n"
@@ -45,11 +43,10 @@ app = tk.Tk()
 title_label = tk.Label(app, text="Animal Finder", font=("Arial", 24, "bold"))
 title_label.pack(pady=(20,10))
 
-# Create a frame for buttons
+# Button creation and info
 button_frame = tk.Frame(app)
 button_frame.pack(pady=20)
 
-# Create buttons for animal emojis
 animal_emojis = {
     "🐶": "Dog",
     "🐱": "Cat",
