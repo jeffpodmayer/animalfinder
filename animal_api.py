@@ -27,17 +27,13 @@ def show_animal_info(animal_name):
         characteristics = animal_info.get('characteristics', {})
 
         # Building the information text
-        info_text = f"Name: {characteristics.get('common_name', 'Unknown')}\n"
+        info_text = f"Name: {characteristics.get('common_name', animal_name)}\n"
         info_text += f"Scientific Name: {taxonomy.get('scientific_name', 'Not available')}\n"
         info_text += f"Habitat: {characteristics.get('habitat', 'Not available')}\n"
         info_text += f"Diet: {characteristics.get('diet', 'Not available')}\n"
         info_text += f"Description: {characteristics.get('slogan', 'Not available')}\n"
-        info_text += f"Emoji: {animal_info.get('emoji', 'No emoji available')}\n"
-
-        # You can add more details if desired
         info_text += f"Top Speed: {characteristics.get('top_speed', 'Not available')}\n"
         info_text += f"Lifespan: {characteristics.get('lifespan', 'Not available')}\n"
-        info_text += f"Weight: {characteristics.get('weight', 'Not available')}\n"
     else:
         info_text = "Error fetching data."
 
