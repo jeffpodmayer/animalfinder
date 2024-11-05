@@ -39,14 +39,11 @@ def show_animal_info(animal_name):
 
     info_label.config(text=info_text)
 
-
-# Create the main application window
+# Creating app window
 app = tk.Tk()
-app.title("Animal Finder")
 
-# Label to display animal information
-info_label = tk.Label(app, text="Welcome to Animal Finder!", font=("Arial", 14))
-info_label.pack(pady=20)
+title_label = tk.Label(app, text="Animal Finder", font=("Arial", 24, "bold"))
+title_label.pack(pady=(20,10))
 
 # Create a frame for buttons
 button_frame = tk.Frame(app)
@@ -71,11 +68,17 @@ animal_emojis = {
     "🦔": "Hedgehog"
 }
 
-# Create a button for each animal emoji
-for emoji, name in animal_emojis.items():
+# Create a button for each animal emoji in rows of 5
+for i, (emoji, name) in enumerate(animal_emojis.items()):
+    row = i // 5  # row index
+    col = i % 5   # column index
     button = tk.Button(button_frame, text=emoji, font=("Arial", 30),
                        command=lambda n=name: show_animal_info(n))
-    button.pack(side=tk.LEFT, padx=5)
+    button.grid(row=row, column=col, padx=5, pady=5)  # Use grid 
+
+    # Label to display animal information
+info_label = tk.Label(app, font=("Arial", 14))
+info_label.pack(pady=20)
 
 # Start the application
 app.mainloop()
